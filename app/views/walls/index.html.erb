@@ -11,7 +11,7 @@
 
 <% @walls.each do |wall| %>
   <tr>
-    <td><%= wall.user_id %></td>
+    <td><%= wall.user.user_name %></td>
     <td><%= wall.message %></td>
     <td><%= link_to 'Show', wall %></td>
     <td><%= link_to 'Edit', edit_wall_path(wall) %></td>

@@ -2,7 +2,7 @@ class WallsController < ApplicationController
   # GET /walls
   # GET /walls.json
   def index
-    @walls = Wall.all
+    @walls = Wall.all :include => :user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,8 +40,7 @@ class WallsController < ApplicationController
   # POST /walls
   # POST /walls.json
   def create
-    @wall = Wall.new(params[:wall])
-
+    @wall = current_user.walls.build(params[:wall])
     respond_to do |format|
       if @wall.save
         format.html { redirect_to @wall, notice: 'Wall was successfully created.' }
