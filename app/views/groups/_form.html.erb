@@ -1,12 +1,4 @@
-<%= form_for(@group) do |f| %>
-    <%= raw render_error @group %>
-    <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name %>
-    </div>
-    <div class="field">
-        <%= f.label :description %><br />
-        <%= f.text_field :description %>
-    </div>
-    <%= submit_form f %>
-<% end %>
+<%= render_form @group, {
+    name:        'text_field',
+    description: 'text_area'
+} %>

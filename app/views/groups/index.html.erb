@@ -15,9 +15,7 @@
     <td><%= group.user_id %></td>
     <td><%= group.name %></td>
     <td><%= group.description %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, confirm: 'Are you sure?', method: :delete %></td>
+    <%= action_list group, edit_group_path(group) %>
   </tr>
 <% end %>
 </table>

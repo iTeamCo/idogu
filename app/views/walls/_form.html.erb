@@ -1,8 +1,3 @@
-<%= form_for(@wall) do |f| %>
-    <%= raw render_error @wall %>
-    <div class="field">
-        <%= f.label :message %><br />
-        <%= f.text_field :message %>
-    </div>
-    <%= submit_form f %>
-<% end %>
+<%= render_form @wall, {
+        message: 'text_field'
+} %>

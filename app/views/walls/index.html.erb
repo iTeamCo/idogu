@@ -13,9 +13,7 @@
   <tr>
     <td><%= wall.user.user_name %></td>
     <td><%= wall.message %></td>
-    <td><%= link_to 'Show', wall %></td>
-    <td><%= link_to 'Edit', edit_wall_path(wall) %></td>
-    <td><%= link_to 'Destroy', wall, confirm: 'Are you sure?', method: :delete %></td>
+    <%= action_list wall, edit_wall_path(wall) %>
   </tr>
 <% end %>
 </table>
