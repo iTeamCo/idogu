@@ -1,10 +1,8 @@
 Idogu::Application.routes.draw do
   resources :profiles
-
   resources :groups
-
+  resources :attachments
   resources :walls
-
   resources :users
 
   # The priority is based upon order of creation:

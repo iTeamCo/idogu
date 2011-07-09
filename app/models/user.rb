@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
 
-  has_one :profile
-  has_many :groups
-  has_many :walls
+  has_one   :profile
+  has_many  :groups
+  has_many  :walls
+  has_many  :attachments, :as => :attachable
 
   attr_accessor :password, :password_confirmation
 

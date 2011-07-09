@@ -29,9 +29,9 @@ module ApplicationHelper
   end
 
   def render_form(instance, opts={})
-    form_for(instance) do |f|
+    form_for instance, :html => opts[:html] do |f|
       raw(render_error instance) <<
-      raw(opts.map{|k,v| tag_helper f, v, k }.join) <<
+      raw(opts[:fields].map{|k,v| tag_helper f, v, k }.join) <<
       submit_form(f)
     end
   end
