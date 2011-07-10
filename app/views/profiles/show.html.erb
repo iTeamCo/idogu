@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
+<%= render_header %>
+<%= render_notice %>
 
 <p>
   <b>User:</b>
   <%= @profile.user_id %>
 </p>
 
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= edit_link edit_profile_path(@profile) %> |
+<%= back_link profiles_path %>

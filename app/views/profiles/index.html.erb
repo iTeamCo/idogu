@@ -1,4 +1,4 @@
-<h1>Listing profiles</h1>
+<%= render_header %>
 
 <table>
   <tr>
@@ -11,11 +11,11 @@
 <% @profiles.each do |profile| %>
   <tr>
     <td><%= profile.user_id %></td>
-    <%= action_list profile, edit_profile_path(profile) %>
+    <%= action_links profile, edit_profile_path(profile) %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Profile', new_profile_path %>
+<%= new_link new_profile_path %>

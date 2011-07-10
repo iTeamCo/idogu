@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Idogu
   class Application < Rails::Application
+    puts "Ruby: #{RUBY_VERSION}"
+    raise SyntaxError, 'Use Ruby version 1.9.x' if RUBY_VERSION.to_f < 1.9
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

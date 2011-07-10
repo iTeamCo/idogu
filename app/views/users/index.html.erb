@@ -1,4 +1,4 @@
-<h1>Listing users</h1>
+<%= render_header %>
 
 <table>
   <tr>
@@ -11,11 +11,11 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.user_name %></td>
-    <%= action_list user, edit_user_path(user) %>
+    <%= action_links user, edit_user_path(user) %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= new_link new_user_path %>

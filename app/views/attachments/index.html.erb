@@ -1,4 +1,4 @@
-<h1>Listing attachments</h1>
+<%= render_header %>
 
 <table>
   <tr>
@@ -11,11 +11,11 @@
 <% @attachments.each do |attachment| %>
   <tr>
     <td><%= attachment.user_id %></td>
-    <%= action_list attachment, edit_attachment_path(attachment) %>
+    <%= action_links attachment, edit_attachment_path(attachment) %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New File', new_attachment_path %>
+<%= new_link new_attachment_path %>

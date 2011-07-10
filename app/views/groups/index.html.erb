@@ -1,4 +1,4 @@
-<h1>Listing groups</h1>
+<%= render_header %>
 
 <table>
   <tr>
@@ -15,11 +15,11 @@
     <td><%= group.user_id %></td>
     <td><%= group.name %></td>
     <td><%= group.description %></td>
-    <%= action_list group, edit_group_path(group) %>
+    <%= action_links group, edit_group_path(group) %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Group', new_group_path %>
+<%= new_link new_group_path %>
