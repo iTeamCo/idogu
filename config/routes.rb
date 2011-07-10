@@ -1,4 +1,6 @@
 Idogu::Application.routes.draw do
+  devise_for :people
+
   resources :profiles
   resources :groups
   resources :attachments
