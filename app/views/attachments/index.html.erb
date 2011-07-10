@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>User</th>
-    <th></th>
+    <th>Attachment</th>
     <th></th>
     <th></th>
   </tr>
@@ -11,6 +11,7 @@
 <% @attachments.each do |attachment| %>
   <tr>
     <td><%= attachment.user_id %></td>
+    <td><%= image_tag attachment.assets.url(:thumb) %></td>
     <%= action_links attachment, edit_attachment_path(attachment) %>
   </tr>
 <% end %>

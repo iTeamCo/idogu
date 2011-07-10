@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_one   :profile
   has_many  :groups
   has_many  :walls
-  has_many  :attachments, :as => :attachable
+  has_many  :attachments
 
   attr_accessor :password, :password_confirmation
 
