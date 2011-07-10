@@ -7,3 +7,4 @@ tmp/
 .idea
 public/system/assets/*
 Gemfile.lock
+.DS_Store
