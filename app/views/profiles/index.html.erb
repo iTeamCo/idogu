@@ -11,11 +11,11 @@
 <% @profiles.each do |profile| %>
   <tr>
     <td><%= profile.user_id %></td>
-    <%= action_links profile, edit_profile_path(profile) %>
+    <%= action_links profile %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link new_profile_path %>
+<%= new_link %>

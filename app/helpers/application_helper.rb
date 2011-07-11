@@ -37,26 +37,33 @@ module ApplicationHelper
     content_tag(:h1) { "#{action_name.humanize} #{controller_name.humanize.singularize}" }
   end
 
-  def action_links(instance, edit_path)
-    content_tag(:td) { show_link instance }   <<
-    content_tag(:td) { edit_link edit_path }  <<
-    content_tag(:td) { link_to 'Destroy', instance, confirm: 'Are you sure?', method: :delete }
+  def action_links(instance)
+    content_tag(:td) { show_link instance } <<
+    content_tag(:td) { edit_link instance } <<
+    content_tag(:td) { link_to 'Destroy',
+                               instance,
+                               confirm: 'Are you sure?',
+                               method: :delete
+    }
   end
 
-  def new_link(new_path)
-    link_to "New #{controller_name.humanize.singularize}", new_path
+  def new_link
+    link_to "New #{controller_name.humanize.singularize}",
+            send("new_#{controller_name.singularize}_path")
   end
 
-  def back_link(back_path)
-    link_to 'Back', back_path
+  def back_link
+    link_to 'Back',
+            send("#{controller_name}_path")
   end
 
   def show_link(instance)
-    link_to('Show', instance)
+    link_to('Show', instance) unless instance.id.nil?
   end
 
-  def edit_link(edit_path)
-    link_to 'Edit', edit_path
+  def edit_link(instance)
+    link_to 'Edit',
+            send("edit_#{controller_name.singularize}_path", instance)
   end
 
 end

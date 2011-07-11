@@ -12,11 +12,11 @@
   <tr>
     <td><%= attachment.user_id %></td>
     <td><%= image_tag attachment.assets.url(:thumb) %></td>
-    <%= action_links attachment, edit_attachment_path(attachment) %>
+    <%= action_links attachment %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link new_attachment_path %>
+<%= new_link %>

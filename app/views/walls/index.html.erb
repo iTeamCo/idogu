@@ -13,11 +13,11 @@
   <tr>
     <td><%= wall.user.user_name %></td>
     <td><%= wall.message %></td>
-    <%= action_links wall, edit_wall_path(wall) %>
+    <%= action_links wall %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= new_link new_wall_path %>
+<%= new_link %>
