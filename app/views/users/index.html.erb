@@ -6,12 +6,14 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.user_name %></td>
     <%= action_links user %>
+    <td><%= link_to 'Profile', user_profiles_path(user) %></td>
   </tr>
 <% end %>
 </table>

@@ -1,7 +1,10 @@
 <%= render_header %>
+
 <%= render_form @group, fields: {
     name:        'text_field',
     description: 'text_area'
 } %>
+
+
 <%= show_link @group %> |
 <%= back_link %>

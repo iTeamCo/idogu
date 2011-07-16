@@ -2,7 +2,13 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    unless params[:user_id].nil?
+      user      = User.find(params[:user_id])
+      @user_name = user.user_name
+      @profiles  = user.profile || []
+    else
+      @profiles = Profile.all :include => :user
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +16,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/1
-  # GET /profiles/1.json
+    # GET /profiles/1
+    # GET /profiles/1.json
   def show
     @profile = Profile.find(params[:id])
 
@@ -21,9 +27,11 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/new
-  # GET /profiles/new.json
+    # GET /profiles/new
+    # GET /profiles/new.json
   def new
+    user      = User.find(params[:user_id])
+    @user_name = user.user_name unless user.nil?
     @profile = Profile.new
 
     respond_to do |format|
@@ -32,13 +40,13 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # GET /profiles/1/edit
+    # GET /profiles/1/edit
   def edit
     @profile = Profile.find(params[:id])
   end
 
-  # POST /profiles
-  # POST /profiles.json
+    # POST /profiles
+    # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
 
@@ -53,8 +61,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # PUT /profiles/1
-  # PUT /profiles/1.json
+    # PUT /profiles/1
+    # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
 
@@ -69,8 +77,8 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /profiles/1
-  # DELETE /profiles/1.json
+    # DELETE /profiles/1
+    # DELETE /profiles/1.json
   def destroy
     @profile = Profile.find(params[:id])
     @profile.destroy

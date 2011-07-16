@@ -1,22 +1,22 @@
 class User < ActiveRecord::Base
 
-  has_one   :profile
-  has_many  :groups
-  has_many  :walls
-  has_many  :attachments
+  has_one :profile, :dependent => :destroy
+  has_many :groups
+  has_many :walls
+  has_many :attachments
 
   attr_accessor :password, :password_confirmation
 
-  validates     :user_name,
-                :presence     => true,
-                :uniqueness   => true
-  validates     :password,
-                :presence     => true,
-                :length       => 6..30,
-                :on           => :create,
-                :confirmation => true
+  validates :user_name,
+            :presence   => true,
+            :uniqueness => true
+  validates :password,
+            :presence     => true,
+            :length       => 6..30,
+            :on           => :create,
+            :confirmation => true
 
-  before_create   :downcase_username, :encrypt_password
+  before_create :downcase_username, :encrypt_password
 
   def downcase_username
     self.user_name.downcase!
