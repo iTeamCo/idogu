@@ -3,7 +3,8 @@ db/*.sqlite3
 log/*.log
 tmp/
 .sass-cache/
-.idea/
+.idea/*
+.idea
+public/system/assets/*
+Gemfile.lock
 .DS_Store
-.idea/idogu.iml
-.idea/workspace.xml
