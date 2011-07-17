@@ -10,7 +10,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20110716213520) do
 
   create_table "addresses", :force => true do |t|
@@ -23,9 +22,6 @@ ActiveRecord::Schema.define(:version => 20110716213520) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-=======
-ActiveRecord::Schema.define(:version => 20110710184917) do
->>>>>>> 95746dce379d21a9fbc826f8acc2897496033ff7
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -47,14 +43,6 @@ ActiveRecord::Schema.define(:version => 20110710184917) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-  create_table "infos", :force => true do |t|
-    t.string   "city"
-    t.string   "country"
-    t.text     "address"
-    t.integer  "zip"
-    t.string   "state"
-=======
   create_table "people", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
@@ -66,17 +54,13 @@ ActiveRecord::Schema.define(:version => 20110710184917) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
->>>>>>> 95746dce379d21a9fbc826f8acc2897496033ff7
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   add_index "people", ["email"], :name => "index_people_on_email", :unique => true
   add_index "people", ["reset_password_token"], :name => "index_people_on_reset_password_token", :unique => true
 
->>>>>>> 95746dce379d21a9fbc826f8acc2897496033ff7
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
