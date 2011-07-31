@@ -1,8 +1,9 @@
 <%= render_header %>
-<%= render_form @user, fields: {
-    user_name:             'text_field',
-    password:              'password_field',
-    password_confirmation: 'password_field'
-} %>
+<%= render_form @user,
+                fields: {
+                                user_name:             'text_field',
+                                password:              'password_field',
+                                password_confirmation: 'password_field'
+                        } %>
 <%= show_link @user %> |
 <%= back_link %>

@@ -17,7 +17,11 @@ module ApplicationHelper
     content_tag :div, class: 'field' do
       f.label(field) <<
           raw('<br />') <<
-          setting.nil? ? f.send(type, field) : f.send(type, field, setting)
+          if setting.nil?
+            f.send(type, field)
+          else
+            f.send(type, field, setting)
+          end
     end
   end
 
@@ -25,8 +29,18 @@ module ApplicationHelper
     opts[:setting] ||= { }
     form_for instance, html: opts[:html] do |f|
       raw(render_error instance) <<
-          raw(opts[:fields].map { |k, v| tag_helper f, v, k, opts[:setting][:k] }.join) <<
+          raw(opts[:fields].map { |k, v| tag_helper f, v, k, opts[:setting][k.to_sym] }.join) <<
           submit_form(f)
+    end
+  end
+
+  def render_table(instance, opts={ })
+    content_tag :table, id: "#{controller_name}_#{action_name}", class: action_name do
+      raw(content_tag(:tr) <<
+        raw(opts[:header].map { |h| content_tag(:th, h) }.join)) <<
+        content_tag(:tr) <<
+        raw(opts[:body].map { |b| instance.send(b) }.join)
+
     end
   end
 

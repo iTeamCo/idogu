@@ -1,11 +1,12 @@
 class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
+
   def index
     unless params[:user_id].nil?
       user      = User.find(params[:user_id])
       @user_name = user.user_name
-      @profiles  = user.profile || []
+      @profiles  = [user.profile] || []
     else
       @profiles = Profile.all :include => :user
     end
@@ -48,7 +49,7 @@ class ProfilesController < ApplicationController
     # POST /profiles
     # POST /profiles.json
   def create
-    @profile = Profile.new(params[:profile])
+    @profile = current_user.build_profile(params[:profile])
 
     respond_to do |format|
       if @profile.save

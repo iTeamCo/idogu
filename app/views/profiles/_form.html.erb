@@ -1,13 +1,15 @@
 <%= render_header %>
 <%= render_form @profile,
                 fields:  {
-                                 first_name: 'text_field',
-                                 last_name:  'text_field',
-                                 birthday:   'date_select',
-                                 email:      'email_field'
+                                 first_name:        'text_field',
+                                 last_name:         'text_field',
+                                 birthday:          'date_select',
+                                 alternative_email: 'email_field',
+                                 gender:            'select'
                          },
                 setting: {
-                        birthday: { start_year: 1995 }
+                        birthday: { start_year: 1925 },
+                        gender:   Profile::GENDER
                 } %>
 <%= show_link @profile %> |
 <%= back_link %>

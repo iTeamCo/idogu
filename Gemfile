@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'rmagick'
 gem 'devise'
+gem "enumerated_attribute"
 
 # Use unicorn as the web server
 # gem 'unicorn'
