@@ -2,20 +2,19 @@ require 'ostruct'
 
 module TableFactory
   class Section
-    def tab number=1
+    def tab number = 1
       tab    = '    '
       output = tab
       1.upto(number).map { output }.join(tab)
     end
 
-    def css(options = { })
+    def attrs(options = { })
       return '' unless options
-      options.keys.map { |k| " #{k}=\"#{options[k].to_a.join(' ')}\"" }.join(' ')
-    end
-
-    def attrs(options={ })
-      return '' unless options
-      options.keys.map { |k| " #{k}=\"#{options[k].to_a.join(' ')}\"" }.join(' ')
+      options.keys.map do |k|
+        " #{k}=\"#{options[k].is_a?(Array) ?
+            options[k].to_a.join(' ') :
+            options[k]}\""
+      end.join(' ')
     end
   end
 
@@ -36,11 +35,11 @@ module TableFactory
     def to_s
       return '' if @columns.empty?
       [
-          "<thead#{css(@style)}>",
+          "<thead#{attrs(@style)}>",
           "<tr>",
           @columns.map do |column|
             [
-                "<th#{css(column[:style])}>",
+                "<th#{attrs(column[:style])}>",
                 "#{column[:text].to_s}",
                 "</th>"
             ]
@@ -52,14 +51,14 @@ module TableFactory
   end
 
   class Body < Section
-    def initialize(data, options ={ })
+    def initialize(data, options = { })
       @data  = data
       @style = options
     end
 
-    def build(options ={ })
+    def build(options = { })
       @html = [
-          "<tbody#{css(@style)}>",
+          "<tbody#{attrs(@style)}>",
           @data.map do |data|
             row = OpenStruct.new
             yield row, data, @data.index(data)
@@ -67,7 +66,7 @@ module TableFactory
                 "<tr>",
                 row.instance_variable_get("@table").keys.map do |key|
                   text, style = row.send(key.to_sym)
-                  "<td#{css(style)}>#{text}</td>"
+                  "<td#{attrs(style)}>#{text}</td>"
                 end.join,
                 "</tr>"
             ]
@@ -85,9 +84,9 @@ module TableFactory
     def to_s
       return '' if @columns.empty?
       [
-          "<tfoot#{css(@style)}><tr>",
+          "<tfoot#{attrs(@style)}><tr>",
           @columns.map do |column|
-            "<td#{css(column[:style])}>#{column[:text].to_s}}</td>"
+            "<td#{attrs(column[:style])}>#{column[:text].to_s}</td>"
           end.join,
           "</tr></tfoot>"
       ].join
@@ -95,11 +94,11 @@ module TableFactory
   end
 
   class Table < Section
-    def initialize(data, options={ })
+    def initialize(data, options = { })
       @data = data
     end
 
-    def build(options= { })
+    def build(options = { })
       @header = Header.new(options[:header])
       @body   = Body.new(@data, options[:body])
       @foot   = Footer.new(options[:foot])
@@ -115,7 +114,15 @@ end
 #example
 a     = [1, 2, 3, 4, 5, 6, 7]
 table = TableFactory::Table.new(a)
-table.build({ header: { class: :testing } }) do |header, body, footer|
+table.build({
+                header:     {
+                                class: :testing
+                            },
+                attributes: {
+                    cellspasing: 0,
+                    cellpadding: 0
+                }
+            }) do |header, body, footer|
   header.column = :name, { class: [:test1] }
   header.column = :number
   body.build do |row, num, index|
