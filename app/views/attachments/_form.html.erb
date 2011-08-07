@@ -1,3 +1,5 @@
+<%= render_header %>
+
 <%= render_form @attachment, {
         fields: {
             assets: 'file_field'
@@ -7,3 +9,6 @@
         }
 
 } %>
+
+<%= show_link @attachment %> |
+<%= back_link %>

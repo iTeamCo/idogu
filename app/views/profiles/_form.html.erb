@@ -1,21 +1,15 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render_header %>
+<%= render_form @profile,
+                fields:  {
+                                 first_name:        'text_field',
+                                 last_name:         'text_field',
+                                 birthday:          'date_select',
+                                 alternative_email: 'email_field',
+                                 gender:            'select'
+                         },
+                setting: {
+                        birthday: { start_year: 1925 },
+                        gender:   Profile::GENDER
+                } %>
+<%= show_link @profile %> |
+<%= back_link %>

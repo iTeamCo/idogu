@@ -1,21 +1,29 @@
-<h1>Listing profiles</h1>
+<%= render_header(@user_name) %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<!--<table>-->
+  <!--<tr>-->
+    <!--<th>Login</th>-->
+    <!--<th>Full name</th>-->
+    <!--<th>Alternative email</th>-->
+    <!--<th>Birthday</th>-->
+  <!--</tr>-->
 
-<% @profiles.each do |profile| %>
-  <tr>
-    <td><%= profile.user_id %></td>
-    <%= action_list profile, edit_profile_path(profile) %>
-  </tr>
-<% end %>
-</table>
+<!--<% @profiles.each do |profile| %>-->
+  <!--<tr <%= "class=\"#{cycle('flip', 'flop')}\""%>>-->
+    <!--<td><%= profile.user.user_name %></td>-->
+    <!--<td><%= profile.name %></td>-->
+    <!--<td><%= profile.alternative_email %></td>-->
+    <!--<td><%= profile.birthday %></td>-->
+    <!--<%= action_links profile %>-->
+  <!--</tr>-->
+<!--<% end %>-->
+<!--</table>-->
+
+<%= render_table @profiles, {
+        header: ['Login', 'Full name', 'Alternative email', 'Birthday'],
+        body: ['user.user_name', 'name', 'alternative_email', 'birthday']
+} %>
 
 <br />
 
-<%= link_to 'New Profile', new_profile_path %>
+<%= new_link %>

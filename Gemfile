@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'rmagick'
 gem 'devise'
+gem "enumerated_attribute"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -27,6 +28,10 @@ gem 'devise'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :development do
+  gem 'awesome_print'
+end
 
 group :test do
   # Pretty printed test output

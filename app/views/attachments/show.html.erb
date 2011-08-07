@@ -1,20 +1,10 @@
-<p id="notice"><%= notice %></p>
+<%= render_header %>
+<%= render_notice %>
 
 <p>
   <b>User:</b>
-  <%= @group.user_id %>
+  <%= @attachment.user_id %>
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @group.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @group.description %>
-</p>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<%= edit_link @attachment %> |
+<%= back_link %>

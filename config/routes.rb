@@ -1,11 +1,13 @@
 Idogu::Application.routes.draw do
   devise_for :users
 
+  resources :addresses
+  resources :infos
   resources :profiles
   resources :groups
   resources :attachments
   resources :walls
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

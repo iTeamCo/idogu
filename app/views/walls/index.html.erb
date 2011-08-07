@@ -1,4 +1,4 @@
-<h1>Listing walls</h1>
+<%= render_header %>
 
 <table>
   <tr>
@@ -13,11 +13,11 @@
   <tr>
     <td><%= wall.user.email %></td>
     <td><%= wall.message %></td>
-    <%= action_list wall, edit_wall_path(wall) %>
+    <%= action_links wall %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Wall', new_wall_path %>
+<%= new_link %>

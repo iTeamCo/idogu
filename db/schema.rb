@@ -11,6 +11,16 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20110807143647) do
+  create_table "addresses", :force => true do |t|
+    t.string   "country",          :limit => 2
+    t.string   "zip_code"
+    t.string   "city"
+    t.text     "address"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end                                                     
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -54,6 +64,11 @@ ActiveRecord::Schema.define(:version => 20110807143647) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "gender"
+    t.date     "birthday"
+    t.string   "alternative_email"
   end
 
   create_table "users", :force => true do |t|
