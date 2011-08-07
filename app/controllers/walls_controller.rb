@@ -1,5 +1,5 @@
 class WallsController < ApplicationController
-  before_filter :authenticate_person!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index]
   
   # GET /walls
   # GET /walls.json

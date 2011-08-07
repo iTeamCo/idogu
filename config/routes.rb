@@ -1,5 +1,5 @@
 Idogu::Application.routes.draw do
-  devise_for :people
+  devise_for :users
 
   resources :profiles
   resources :groups
