@@ -11,7 +11,7 @@
 
 <% @walls.each do |wall| %>
   <tr>
-    <td><%= wall.user.user_name %></td>
+    <td><%= wall.user.email %></td>
     <td><%= wall.message %></td>
     <%= action_list wall, edit_wall_path(wall) %>
   </tr>

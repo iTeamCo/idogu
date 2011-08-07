@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110717144150) do
+ActiveRecord::Schema.define(:version => 20110807143647) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
@@ -57,9 +57,6 @@ ActiveRecord::Schema.define(:version => 20110717144150) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "user_name"
-    t.string   "password_salt"
-    t.string   "password_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                                 :default => "", :null => false
